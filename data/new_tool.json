@@ -1,0 +1,25 @@
+{
+    "name": "Midjourney",
+    "logo": "https://www.midjourney.com/favicon.ico",
+    "logoType": "image",
+    "category": "Image Generation",
+    "description": "AI-powered image generation tool that creates stunning artwork and visuals from text descriptions. Known for its artistic style and high-quality outputs.",
+    "features": [
+        "Text to image",
+        "Style variations",
+        "High resolution",
+        "Artistic styles",
+        "Image upscaling",
+        "Blend images"
+    ],
+    "useCases": [
+        "Digital Art",
+        "Marketing",
+        "Concept Design",
+        "Illustrations"
+    ],
+    "pricing": "Paid",
+    "rating": 4.7,
+    "website": "https://www.midjourney.com",
+    "docs": "https://docs.midjourney.com"
+}
