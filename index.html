@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Karyashala - Discover & Learn | AI Tools Directory</title>
+    <meta name="description" content="Discover powerful AI tools and master prompt engineering with our curated directory and learning templates.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out',
+                        'slide-in-right': 'slideInRight 0.3s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46a1 100%);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Gradient Backgrounds */
+        .gradient-hero {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-dark {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Tool Card Styles */
+        .tool-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .tool-card:hover::before {
+            left: 100%;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.35);
+        }
+
+        .tool-card .tool-icon {
+            transition: all 0.4s ease;
+        }
+
+        .tool-card:hover .tool-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Template Card */
+        .template-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .template-card:hover {
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        /* Tab Styles */
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .tab-btn.active::after {
+            width: 100%;
+        }
+
+        .tab-btn:hover::after {
+            width: 70%;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            transition: all 0.3s ease;
+        }
+
+        .category-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .category-badge.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Floating Elements */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Tool Logo */
+        .tool-logo {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        /* Search Input */
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .copy-btn.copied {
+            background-color: #10b981;
+            color: white;
+        }
+
+        /* Stats Counter */
+        .stat-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Pricing Badge */
+        .pricing-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+        }
+
+        /* Feature Tag */
+        .feature-tag {
+            transition: all 0.2s ease;
+        }
+
+        .feature-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+            z-index: 2000;
+            animation: slideInRight 0.3s ease-out;
+            display: none;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        /* Dark Mode Styles */
+        .dark {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .dark .glass-dark {
+            background: rgba(30, 41, 59, 0.95);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .tool-card,
+        .dark .template-card {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .tool-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.25);
+        }
+
+        .dark h3, .dark h4 {
+            color: #f1f5f9;
+        }
+
+        .dark p {
+            color: #94a3b8;
+        }
+
+        .dark .bg-gray-50 {
+            background-color: #0f172a;
+        }
+
+        .dark .bg-white {
+            background-color: #1e293b;
+        }
+
+        .dark .text-gray-800 {
+            color: #f1f5f9;
+        }
+
+        .dark .text-gray-600 {
+            color: #94a3b8;
+        }
+
+        .dark .text-gray-700 {
+            color: #cbd5e1;
+        }
+
+        .dark .border-gray-200 {
+            border-color: #334155;
+        }
+
+        .dark input, .dark select {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 transition-colors duration-300">
+    <!-- Toast Notification -->
+    <div id="toast" class="toast items-center gap-3">
+        <i class="fas fa-check-circle text-xl"></i>
+        <span id="toast-message">Template copied to clipboard!</span>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Hero Header -->
+    <header class="gradient-hero text-white relative overflow-hidden">
+        <!-- Floating Shapes -->
+        <div class="floating-shape w-72 h-72 bg-white/10 -top-20 -left-20" style="animation-delay: 0s;"></div>
+        <div class="floating-shape w-48 h-48 bg-white/10 top-40 right-20" style="animation-delay: 2s;"></div>
+        <div class="floating-shape w-32 h-32 bg-white/10 bottom-10 left-1/4" style="animation-delay: 4s;"></div>
+        
+        <div class="container mx-auto px-4 py-12 md:py-20 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="text-center md:text-left max-w-2xl">
+                    <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-6 backdrop-blur-sm">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-sm font-medium">Updated Daily • New Tools Added</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight">
+                        AI Karyashala
+                        <span class="block text-white/90">Discover & Learn</span>
+                    </h1>
+                    <p class="text-lg md:text-xl opacity-90 mb-8 leading-relaxed">
+                        Your curated directory of powerful AI tools and prompt engineering templates. 
+                        Master the art of AI communication.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="#tools" class="inline-flex items-center gap-2 bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-1">
+                            <i class="fas fa-rocket"></i>
+                            Explore Tools
+                        </a>
+                        <a href="#templates" class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full font-semibold hover:bg-white/30 transition-all hover:shadow-lg hover:-translate-y-1">
+                            <i class="fas fa-graduation-cap"></i>
+                            Learn Prompting
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Stats Section -->
+                <div class="glass rounded-2xl p-6 md:p-8">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl md:text-5xl font-black mb-1" id="tool-count">8+</div>
+                            <div class="text-sm opacity-80">AI Tools</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl md:text-5xl font-black mb-1">4</div>
+                            <div class="text-sm opacity-80">Templates</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl md:text-5xl font-black mb-1">8</div>
+                            <div class="text-sm opacity-80">Categories</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl md:text-5xl font-black mb-1">Free</div>
+                            <div class="text-sm opacity-80">To Use</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f9fafb" class="dark:fill-[#0f172a]"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="glass-dark shadow-lg sticky top-0 z-50 transition-all duration-300" id="main-nav">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4">
+                <!-- Logo (visible on scroll) -->
+                <div class="hidden md:flex items-center gap-3" id="nav-logo">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-robot text-white"></i>
+                    </div>
+                    <span class="font-bold text-gray-800 dark:text-white">AI Karyashala</span>
+                </div>
+                
+                <!-- Tabs -->
+                <div class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+                    <button onclick="switchTab('tools')" id="tools-tab" class="tab-btn active px-5 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 font-semibold transition-all hover:bg-white dark:hover:bg-gray-700">
+                        <i class="fas fa-tools mr-2"></i>AI Tools
+                    </button>
+                    <button onclick="switchTab('templates')" id="templates-tab" class="tab-btn px-5 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 font-semibold transition-all hover:bg-white dark:hover:bg-gray-700">
+                        <i class="fas fa-graduation-cap mr-2"></i>Templates
+                    </button>
+                </div>
+                
+                <!-- Right Actions -->
+                <div class="flex items-center gap-3">
+                    <!-- Search -->
+                    <div class="relative">
+                        <input type="text" id="search-input" placeholder="Search tools..." 
+                            class="search-input w-48 md:w-64 px-4 py-2.5 pl-10 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:border-purple-500 transition-all text-sm bg-white dark:bg-gray-800">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Toggle Dark Mode">
+                        <i class="fas fa-moon text-gray-600 dark:hidden"></i>
+                        <i class="fas fa-sun text-yellow-500 hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- AI Tools Section -->
+        <div id="tools-content" class="tab-content active">
+            <!-- Section Header -->
+            <div class="text-center mb-12" id="tools">
+                <span class="inline-block px-4 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm font-semibold mb-4">
+                    <i class="fas fa-sparkles mr-1"></i> Curated Collection
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Explore AI Tools</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Discover the most powerful AI tools to supercharge your productivity. Click on any tool to learn more.
+                </p>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="flex flex-wrap gap-3 justify-center mb-10" id="category-filters">
+                <button onclick="filterByCategory('all')" class="category-badge active px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-all">
+                    All Tools
+                </button>
+                <!-- Categories will be dynamically added -->
+            </div>
+            
+            <!-- Tools Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="tools-grid">
+                <!-- Tools will be dynamically inserted here -->
+            </div>
+            
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-16">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                    <i class="fas fa-search text-3xl text-gray-400"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No tools found</h3>
+                <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+
+        <!-- Learning Templates Section -->
+        <div id="templates-content" class="tab-content">
+            <!-- Section Header -->
+            <div class="text-center mb-12" id="templates">
+                <span class="inline-block px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold mb-4">
+                    <i class="fas fa-lightbulb mr-1"></i> Proven Methods
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Prompt Engineering Templates</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Master the art of AI communication with these battle-tested templates. Copy, customize, and start learning effectively.
+                </p>
+            </div>
+            
+            <!-- Templates Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="templates-grid">
+                <!-- Templates will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="bg-gradient-to-r from-purple-600 to-pink-500 py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center text-white">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Stay Updated</h2>
+                <p class="text-lg opacity-90 mb-8">Get notified when we add new AI tools and templates. No spam, just value.</p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto" onsubmit="handleSubscribe(event)">
+                    <input type="email" placeholder="Enter your email" required
+                        class="flex-1 px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-4 focus:ring-white/30">
+                    <button type="submit" class="px-8 py-4 bg-white text-purple-600 rounded-xl font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-1">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-robot text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">AI Karyashala</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Your ultimate destination for discovering AI tools and mastering prompt engineering. 
+                        We curate the best resources to help you leverage AI effectively.
+                    </p>
+                    <!-- Updated Social Media Links - Only Instagram & GitHub -->
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://github.com/aikaryashala/practice" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#tools" class="hover:text-white transition-colors">AI Tools</a></li>
+                        <li><a href="#templates" class="hover:text-white transition-colors">Templates</a></li>
+                        <li><a href="https://github.com/aikaryashala/practice" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resources -->
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Getting Started</a></li>
+                        <li><a href="#templates" class="hover:text-white transition-colors">Prompt Guide</a></li>
+                        <li><a href="#tools" class="hover:text-white transition-colors">Tool Directory</a></li>
+                        <li><a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-400 text-sm">
+                    © 2024 AI Karyashala. Made with <i class="fas fa-heart text-red-500"></i> for AI enthusiasts
+                </p>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tool Detail Modal -->
+    <div id="tool-modal" class="modal items-center justify-center p-4" onclick="handleModalClick(event)">
+        <div class="modal-content bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- Modal Header -->
+            <div class="relative p-6 pb-0">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                </button>
+                
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <img id="modal-logo" class="w-16 h-16 rounded-xl object-contain bg-gray-100 dark:bg-gray-700 p-2" src="" alt="">
+                        <div id="modal-icon-container" class="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center" style="display: none;">
+                            <i id="modal-icon" class="text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <h3 id="modal-title" class="text-2xl font-bold text-gray-800 dark:text-white"></h3>
+                            <span id="modal-pricing" class="pricing-badge px-2 py-1 rounded-full text-xs font-semibold"></span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span id="modal-category" class="text-sm text-purple-600 dark:text-purple-400 font-semibold"></span>
+                            <div class="flex items-center gap-1 text-yellow-500" id="modal-rating">
+                                <!-- Stars will be added dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-6">
+                <p id="modal-description" class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"></p>
+                
+                <!-- Features -->
+                <div class="mb-6">
+                    <h4 class="font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        Key Features
+                    </h4>
+                    <div id="modal-features" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                
+                <!-- Use Cases -->
+                <div class="mb-6" id="modal-use-cases-container">
+                    <h4 class="font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-lightbulb text-yellow-500"></i>
+                        Best For
+                    </h4>
+                    <div id="modal-use-cases" class="flex flex-wrap gap-2"></div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <a id="modal-website" href="" target="_blank" 
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                        <i class="fas fa-external-link-alt"></i>
+                        Visit Website
+                    </a>
+                    <a id="modal-docs" href="" target="_blank" 
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
+                        <i class="fas fa-book"></i>
+                        Documentation
+                    </a>
+                    <button onclick="shareModal()" class="inline-flex items-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced AI Tools Data
+        const aiTools = [
+            {
+                name: "ChatGPT",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+                logoType: "image",
+                category: "Text Generation",
+                description: "A powerful conversational AI developed by OpenAI that can help with writing, coding, analysis, and creative tasks. Uses advanced GPT-4 language understanding to provide detailed, contextual responses across a wide range of topics.",
+                features: ["Natural conversation", "Code generation", "Creative writing", "Analysis & summarization", "Multi-language support", "Plugin ecosystem"],
+                useCases: ["Content Creation", "Coding Help", "Research", "Learning"],
+                pricing: "Freemium",
+                rating: 4.8,
+                website: "https://chat.openai.com",
+                docs: "https://platform.openai.com/docs"
+            },
+            {
+                name: "Replit",
+                logo: "https://i.pinimg.com/736x/45/89/76/45897678148e5e3b6f2931ab62599ca7.jpg",
+                logoType: "image",
+                category: "Development",
+                description: "AI-powered coding platform that revolutionizes how you build, test, and deploy applications directly in your browser. Features intelligent code assistance, collaborative coding, and instant deployment capabilities.",
+                features: ["AI code completion", "Collaborative coding", "Instant deployment", "Multi-language support", "Built-in hosting", "GitHub integration"],
+                useCases: ["Web Development", "Learning to Code", "Prototyping", "Collaboration"],
+                pricing: "Freemium",
+                rating: 4.6,
+                website: "https://replit.com",
+                docs: "https://docs.replit.com"
+            },
+            {
+                name: "Descript",
+                logo: "https://lh3.googleusercontent.com/Z8C4sg-mzqEt1aGu293nhs8BXBIL_B3Lb0AWqxZlsDadYFde3WF0F_WUau68OflGZWSf1zJ21z3RxJcD7LXntQLFYMh_YMSTuuCW",
+                logoType: "image",
+                category: "Audio/Video",
+                description: "Revolutionary AI-powered audio and video editing platform that makes content creation as easy as editing a document. Features automatic transcription, text-based editing, and AI voice cloning.",
+                features: ["Automatic transcription", "Text-based editing", "AI voice cloning", "Screen recording", "Filler word removal", "Studio sound enhancement"],
+                useCases: ["Podcasting", "Video Editing", "Transcription", "Content Creation"],
+                pricing: "Freemium",
+                rating: 4.7,
+                website: "https://www.descript.com",
+                docs: "https://support.descript.com"
+            },
+            {
+                name: "NotebookLM",
+                logo: "https://toolfinder.iu.edu/storage/thumbnails/L3Ak4uaycLTM6AMkonjDU6cOWqUzyllBCcrjzBOa.jpg",
+                logoType: "image",
+                category: "Research",
+                description: "Google's AI-powered research assistant that helps you understand and synthesize information from your documents and sources. Provides source-grounded responses and generates helpful audio overviews.",
+                features: ["Document analysis", "Q&A from sources", "Audio overviews", "Source-grounded responses", "PDF support", "Citation tracking"],
+                useCases: ["Research", "Studying", "Document Analysis", "Note-taking"],
+                pricing: "Free",
+                rating: 4.5,
+                website: "https://notebooklm.google.com",
+                docs: "https://support.google.com/notebooklm"
+            },
+            {
+                name: "Suno AI",
+                logo: "https://suno.com/favicon.ico",
+                logoType: "image",
+                category: "Music",
+                description: "Cutting-edge AI music creation platform that generates original songs, complete with vocals and instrumentals, from simple text descriptions. Create professional-quality music in minutes.",
+                features: ["Full song generation", "Voice synthesis", "Multiple genres", "Custom lyrics", "Instrumental creation", "Audio export"],
+                useCases: ["Music Production", "Content Creation", "Entertainment", "Jingles"],
+                pricing: "Freemium",
+                rating: 4.4,
+                website: "https://suno.com",
+                docs: "https://suno.com/faq"
+            },
+            {
+                name: "Canva AI",
+                logo: "https://www.canva.com/favicon.ico",
+                logoType: "image",
+                category: "Design",
+                description: "Industry-leading AI-powered design platform that helps create stunning visuals, presentations, and marketing materials with intelligent suggestions and magic editing tools.",
+                features: ["AI design suggestions", "Text to image", "Magic edit", "Brand templates", "Background removal", "Video editing"],
+                useCases: ["Graphic Design", "Social Media", "Presentations", "Marketing"],
+                pricing: "Freemium",
+                rating: 4.7,
+                website: "https://www.canva.com/features/ai-tools/",
+                docs: "https://www.canva.com/help/"
+            },
+            {
+                name: "Notion AI",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png",
+                logoType: "image",
+                category: "Productivity",
+                description: "All-in-one AI-powered workspace that helps you write, plan, organize, and collaborate. Enhances your productivity with intelligent writing assistance, meeting summaries, and task automation.",
+                features: ["Auto-fill databases", "Writing assistance", "Meeting summaries", "Task automation", "Knowledge base", "Team collaboration"],
+                useCases: ["Project Management", "Documentation", "Note-taking", "Team Collaboration"],
+                pricing: "Freemium",
+                rating: 4.6,
+                website: "https://www.notion.so/product/ai",
+                docs: "https://www.notion.so/help/ai"
+            },
+            {
+                name: "ElevenLabs",
+                logo: "https://elevenlabs.io/favicon.ico",
+                logoType: "image",
+                category: "Voice & Audio",
+                description: "Premier AI voice synthesis platform that creates ultra-realistic voiceovers and audio content in multiple languages. Features industry-leading voice cloning and text-to-speech technology.",
+                features: ["Voice cloning", "Text-to-speech", "Voice designing", "Audio dubbing", "API access", "Multi-language"],
+                useCases: ["Voiceovers", "Audiobooks", "Video Dubbing", "Accessibility"],
+                pricing: "Freemium",
+                rating: 4.8,
+                website: "https://elevenlabs.io",
+                docs: "https://docs.elevenlabs.io"
+            }
+        ];
+
+        // Enhanced Learning Templates Data
+        const learningTemplates = [
+            {
+                title: "Learn New Topics (Beginner Friendly)",
+                icon: "fas fa-seedling",
+                iconColor: "text-green-500",
+                bgColor: "bg-green-50 dark:bg-green-900/20",
+                category: "Learning Method",
+                difficulty: "Beginner",
+                description: "Perfect for starting from scratch without feeling overwhelmed. Uses chunked learning with analogies and interactive checks.",
+                template: `I am a beginner in backend development. I want to learn about **[INSERT TOPIC]**.
+
+Please teach me this topic by following these strict rules:
+1. **Chunk Size:** Keep every response between 100-150 words. Never exceed this.
+2. **Structure:** Each response must have exactly these four sections:
+   * **The Anchor:** A 1-sentence analogy connecting the concept to real life.
+   * **The Tech:** The technical explanation (bold key terms).
+   * **The Code:** A tiny code snippet or visual description illustrating the point.
+   * **The Check:** A single short question (multiple choice or fill-in-the-blank) to test my understanding.
+3. **Stop & Wait:** After asking the question, stop immediately. **Do not** explain the next step until I answer.
+4. **Feedback:** If I am wrong, explain why briefly and ask a new question. If I am right, move to the next chunk.
+
+Explain in simple language.`,
+                example: "Replace [INSERT TOPIC] with 'REST APIs' or 'Database Design'",
+                tips: "Perfect for absolute beginners - breaks complex topics into digestible chunks",
+                estimatedTime: "30-60 min/topic"
+            },
+            {
+                title: "Test Yourself (Assessment)",
+                icon: "fas fa-brain",
+                iconColor: "text-purple-500",
+                bgColor: "bg-purple-50 dark:bg-purple-900/20",
+                category: "Self Testing",
+                difficulty: "Intermediate",
+                description: "Check if you truly understand a topic you just studied. Focuses on the 'why' and 'how' rather than definitions.",
+                template: `I have just learned about **[INSERT TOPIC]**.
+
+1. Quiz me on this topic one concept at a time.
+2. Ask a question that requires me to explain the 'Why' or 'How', not just the definition.
+3. Keep your feedback under 100 words.
+4. If I struggle, give me a hint using a simple analogy, but don't give the answer immediately.
+5. After 5 correct answers, give me a summary of what I've demonstrated understanding of.
+
+Explain in simple language.`,
+                example: "Use after studying 'Machine Learning Basics' to test understanding",
+                tips: "Focuses on deeper understanding rather than memorization",
+                estimatedTime: "15-30 min"
+            },
+            {
+                title: "Code-First Learning",
+                icon: "fas fa-code",
+                iconColor: "text-blue-500",
+                bgColor: "bg-blue-50 dark:bg-blue-900/20",
+                category: "Hands-On",
+                difficulty: "Intermediate",
+                description: "Get hands-on immediately by learning through code. Perfect for practical learners who prefer learning by doing.",
+                template: `I want to learn how to implement **[INSERT TOPIC]** in code.
+
+1. Give me a small piece of code (max 5 lines) that demonstrates one specific concept.
+2. Explain what that specific code does in under 100 words.
+3. Ask me to modify one part of that code to achieve a different result.
+4. Wait for my modified code before moving on.
+5. If my code is wrong, show me the difference and explain why.
+6. Progressively increase complexity with each new concept.
+
+Language preference: [YOUR PREFERRED LANGUAGE]`,
+                example: "Use for learning 'React Hooks' or 'Python Classes'",
+                tips: "Best for practical learners who prefer learning by doing",
+                estimatedTime: "45-90 min"
+            },
+            {
+                title: "Expert Teacher Method",
+                icon: "fas fa-chalkboard-teacher",
+                iconColor: "text-orange-500",
+                bgColor: "bg-orange-50 dark:bg-orange-900/20",
+                category: "Structured Learning",
+                difficulty: "All Levels",
+                description: "Learn from an expert teacher with a proven step-by-step approach including practice problems.",
+                template: `You are an expert teacher who explains complex topics to beginners.
+I want to learn about [TOPIC NAME].
+
+Rules:
+1. Start with a real-world analogy (50 words max)
+2. Give the technical definition (50 words max)  
+3. Show the simplest possible example
+4. Ask me: "Can you explain this back in your own words?"
+5. Wait for my response before continuing
+6. If correct, give me a practice problem to solve
+7. Check my solution before moving to the next concept
+8. At the end, provide a summary and 3 resources for further learning
+
+Keep each response under 150 words. Don't proceed until I type "continue" or ask a question.`,
+                example: "Use for learning 'Blockchain Technology' or 'Neural Networks'",
+                tips: "Interactive method with practice problems for better retention",
+                estimatedTime: "60-120 min"
+            }
+        ];
+
+        // State
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let currentTool = null;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTools();
+            renderTemplates();
+            renderCategoryFilters();
+            setupSearchListener();
+            setupScrollListener();
+            checkDarkMode();
+        });
+
+        // Render Category Filters
+        function renderCategoryFilters() {
+            const categories = [...new Set(aiTools.map(tool => tool.category))];
+            const container = document.getElementById('category-filters');
+            
+            const categoryButtons = categories.map(category => `
+                <button onclick="filterByCategory('${category}')" class="category-badge px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-all">
+                    ${category}
+                </button>
+            `).join('');
+            
+            container.innerHTML = `
+                <button onclick="filterByCategory('all')" class="category-badge active px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-all">
+                    All Tools
+                </button>
+                ${categoryButtons}
+            `;
+        }
+
+        // Filter by Category
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-badge').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.trim() === category || (category === 'all' && btn.textContent.trim() === 'All Tools')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            renderTools();
+        }
+
+        // Setup Search Listener
+        function setupSearchListener() {
+            const searchInput = document.getElementById('search-input');
+            let debounceTimer;
+            
+            searchInput.addEventListener('input', function(e) {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    searchQuery = e.target.value.toLowerCase();
+                    renderTools();
+                }, 300);
+            });
+        }
+
+        // Setup Scroll Listener
+        function setupScrollListener() {
+            const backToTop = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+        }
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render AI Tools
+        function renderTools() {
+            const grid = document.getElementById('tools-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            let filteredTools = aiTools;
+            
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filteredTools = filteredTools.filter(tool => tool.category === currentCategory);
+            }
+            
+            // Filter by search
+            if (searchQuery) {
+                filteredTools = filteredTools.filter(tool => 
+                    tool.name.toLowerCase().includes(searchQuery) ||
+                    tool.category.toLowerCase().includes(searchQuery) ||
+                    tool.description.toLowerCase().includes(searchQuery)
+                );
+            }
+            
+            if (filteredTools.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            
+            grid.innerHTML = filteredTools.map((tool, index) => `
+                <div onclick="showToolDetail('${tool.name}')" 
+                    class="tool-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 cursor-pointer border border-gray-100 dark:border-gray-700"
+                    style="animation: fadeInUp 0.5s ease-out ${index * 0.1}s both;">
+                    <div class="flex flex-col">
+                        <!-- Header -->
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="tool-icon">
+                                ${tool.logoType === 'icon' ? 
+                                    `<div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                                        <i class="${tool.logo} text-white text-xl"></i>
+                                    </div>` :
+                                    `<img src="${tool.logo}" alt="${tool.name}" class="w-14 h-14 rounded-xl object-contain bg-gray-50 dark:bg-gray-700 p-2">`
+                                }
+                            </div>
+                            <span class="pricing-badge px-2 py-1 rounded-full text-xs font-semibold ${
+                                tool.pricing === 'Free' ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' : 
+                                'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
+                            }">
+                                ${tool.pricing}
+                            </span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">${tool.name}</h3>
+                        <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 mb-3">${tool.category}</span>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">${tool.description.substring(0, 100)}...</p>
+                        
+                        <!-- Rating -->
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
+                            <div class="flex items-center gap-1">
+                                ${renderStars(tool.rating)}
+                                <span class="text-sm text-gray-500 dark:text-gray-400 ml-1">${tool.rating}</span>
+                            </div>
+                            <span class="text-purple-600 dark:text-purple-400 text-sm font-medium">
+                                Learn more <i class="fas fa-arrow-right ml-1"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Stars
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            let stars = '';
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star text-yellow-400 text-xs"></i>';
+            }
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt text-yellow-400 text-xs"></i>';
+            }
+            for (let i = fullStars + (hasHalfStar ? 1 : 0); i < 5; i++) {
+                stars += '<i class="far fa-star text-yellow-400 text-xs"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Render Learning Templates
+        function renderTemplates() {
+            const grid = document.getElementById('templates-grid');
+            grid.innerHTML = learningTemplates.map((template, index) => `
+                <div class="template-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all"
+                    style="animation: fadeInUp 0.5s ease-out ${index * 0.1}s both;">
+                    <!-- Header -->
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 ${template.bgColor} rounded-xl flex items-center justify-center">
+                                <i class="${template.icon} ${template.iconColor} text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">${template.title}</h3>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-xs px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full">${template.category}</span>
+                                    <span class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full">${template.difficulty}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                            <i class="far fa-clock"></i>
+                            ${template.estimatedTime}
+                        </span>
+                    </div>
+                    
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">${template.description}</p>
+                    
+                    <!-- Template Code Block -->
+                    <div class="relative bg-gray-50 dark:bg-gray-900 rounded-xl p-4 mb-4 group">
+                        <button onclick="copyTemplate(this, \`${escapeTemplate(template.template)}\`)" 
+                            class="copy-btn absolute top-3 right-3 w-8 h-8 rounded-lg bg-white dark:bg-gray-800 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                            <i class="fas fa-copy text-gray-500 dark:text-gray-400 text-sm"></i>
+                        </button>
+                        <pre class="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap overflow-x-auto max-h-48">${template.template}</pre>
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div class="border-t border-gray-100 dark:border-gray-700 pt-4 space-y-2">
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-800 dark:text-white">Example:</strong> ${template.example}
+                        </p>
+                        <p class="text-sm text-purple-600 dark:text-purple-400 flex items-center gap-2">
+                            <i class="fas fa-lightbulb text-yellow-500"></i>
+                            ${template.tips}
+                        </p>
+                    </div>
+                    
+                    <!-- Copy Full Template Button -->
+                    <button onclick="copyTemplate(this, \`${escapeTemplate(template.template)}\`)" 
+                        class="mt-4 w-full py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i>
+                        Copy Template
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Escape template for HTML attribute
+        function escapeTemplate(template) {
+            return template.replace(/`/g, '\\`').replace(/\$/g, '\\$');
+        }
+
+        // Copy Template
+        function copyTemplate(button, template) {
+            const cleanTemplate = template.replace(/\\`/g, '`').replace(/\\\$/g, '$');
+            navigator.clipboard.writeText(cleanTemplate).then(() => {
+                showToast('Template copied to clipboard!');
+                
+                // Visual feedback
+                const icon = button.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-copy');
+                    icon.classList.add('fa-check');
+                    button.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        icon.classList.remove('fa-check');
+                        icon.classList.add('fa-copy');
+                        button.classList.remove('copied');
+                    }, 2000);
+                }
+            });
+        }
+
+        // Show Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Switch tabs
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`${tab}-tab`).classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tab}-content`).classList.add('active');
+        }
+
+        // Show tool detail modal
+        function showToolDetail(toolName) {
+            const tool = aiTools.find(t => t.name === toolName);
+            if (!tool) return;
+            currentTool = tool;
+
+            // Handle logo
+            const modalLogo = document.getElementById('modal-logo');
+            const modalIconContainer = document.getElementById('modal-icon-container');
+            
+            if (tool.logoType === 'icon') {
+                modalLogo.style.display = 'none';
+                modalIconContainer.style.display = 'flex';
+                document.getElementById('modal-icon').className = tool.logo + ' text-2xl text-white';
+            } else {
+                modalLogo.style.display = 'block';
+                modalIconContainer.style.display = 'none';
+                modalLogo.src = tool.logo;
+            }
+            
+            document.getElementById('modal-title').textContent = tool.name;
+            document.getElementById('modal-category').textContent = tool.category;
+            document.getElementById('modal-description').textContent = tool.description;
+            
+            // Pricing badge
+            const pricingBadge = document.getElementById('modal-pricing');
+            pricingBadge.textContent = tool.pricing;
+            pricingBadge.className = `pricing-badge px-2 py-1 rounded-full text-xs font-semibold ${
+                tool.pricing === 'Free' ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' : 
+                'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
+            }`;
+            
+            // Rating
+            document.getElementById('modal-rating').innerHTML = renderStars(tool.rating) + 
+                `<span class="text-sm text-gray-500 dark:text-gray-400 ml-1">${tool.rating}</span>`;
+            
+            // Features
+            document.getElementById('modal-features').innerHTML = tool.features.map(feature => 
+                `<div class="feature-tag flex items-center gap-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-2">
+                    <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">${feature}</span>
+                </div>`
+            ).join('');
+            
+            // Use Cases
+            if (tool.useCases && tool.useCases.length > 0) {
+                document.getElementById('modal-use-cases-container').style.display = 'block';
+                document.getElementById('modal-use-cases').innerHTML = tool.useCases.map(useCase => 
+                    `<span class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full text-sm font-medium">${useCase}</span>`
+                ).join('');
+            } else {
+                document.getElementById('modal-use-cases-container').style.display = 'none';
+            }
+            
+            document.getElementById('modal-website').href = tool.website;
+            document.getElementById('modal-docs').href = tool.docs;
+            
+            document.getElementById('tool-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Handle Modal Click
+        function handleModalClick(event) {
+            if (event.target.id === 'tool-modal') {
+                closeModal();
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('tool-modal').classList.remove('active');
+            document.body.style.overflow = '';
+            currentTool = null;
+        }
+
+        // Share Modal
+        function shareModal() {
+            if (currentTool && navigator.share) {
+                navigator.share({
+                    title: currentTool.name,
+                    text: currentTool.description,
+                    url: currentTool.website
+                });
+            } else if (currentTool) {
+                navigator.clipboard.writeText(currentTool.website);
+                showToast('Link copied to clipboard!');
+            }
+        }
+
+        // Dark Mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+        }
+
+        function checkDarkMode() {
+            if (localStorage.getItem('darkMode') === 'true' || 
+                (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkMode') === null)) {
+                document.body.classList.add('dark');
+            }
+        }
+
+        // Handle Subscribe
+        function handleSubscribe(event) {
+            event.preventDefault();
+            showToast('Thanks for subscribing! 🎉');
+            event.target.reset();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // ESC to close modal
+            if (e.key === 'Escape' && document.getElementById('tool-modal').classList.contains('active')) {
+                closeModal();
+            }
+            
+            // CMD/CTRL + K for search focus
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('search-input').focus();
+            }
+        });
+    </script>
+</body>
+</html>
