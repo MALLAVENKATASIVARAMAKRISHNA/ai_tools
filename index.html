@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Karyashala - Discover & Learn | AI Tools Directory</title>
     <meta name="description" content="Discover powerful AI tools and master prompt engineering with our curated directory and learning templates.">
+    <meta name="keywords" content="AI tools, artificial intelligence, prompt engineering, ChatGPT, AI learning, AI Karyashala">
+    <meta name="author" content="AI Karyashala">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="AI Karyashala - Discover & Learn AI Tools">
+    <meta property="og:description" content="Your curated directory of powerful AI tools and prompt engineering templates.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
@@ -30,6 +47,7 @@
         }
     </script>
     
+    <!-- Custom Styles -->
     <style>
         * {
             font-family: 'Inter', sans-serif;
@@ -272,26 +290,6 @@
             color: white;
         }
 
-        /* Stats Counter */
-        .stat-number {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Skeleton Loading */
-        .skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
         /* Tab Content */
         .tab-content {
             display: none;
@@ -507,7 +505,7 @@
     <nav class="glass-dark shadow-lg sticky top-0 z-50 transition-all duration-300" id="main-nav">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4">
-                <!-- Logo (visible on scroll) -->
+                <!-- Logo -->
                 <div class="hidden md:flex items-center gap-3" id="nav-logo">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center">
                         <i class="fas fa-robot text-white"></i>
@@ -564,7 +562,6 @@
                 <button onclick="filterByCategory('all')" class="category-badge active px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-all">
                     All Tools
                 </button>
-                <!-- Categories will be dynamically added -->
             </div>
             
             <!-- Tools Grid -->
@@ -602,23 +599,6 @@
         </div>
     </main>
 
-    <!-- Newsletter Section -->
-    <section class="bg-gradient-to-r from-purple-600 to-pink-500 py-16">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto text-center text-white">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Stay Updated</h2>
-                <p class="text-lg opacity-90 mb-8">Get notified when we add new AI tools and templates. No spam, just value.</p>
-                <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto" onsubmit="handleSubscribe(event)">
-                    <input type="email" placeholder="Enter your email" required
-                        class="flex-1 px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-4 focus:ring-white/30">
-                    <button type="submit" class="px-8 py-4 bg-white text-purple-600 rounded-xl font-semibold hover:bg-opacity-90 transition-all hover:shadow-lg hover:-translate-y-1">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4">
@@ -635,12 +615,18 @@
                         Your ultimate destination for discovering AI tools and mastering prompt engineering. 
                         We curate the best resources to help you leverage AI effectively.
                     </p>
-                    <!-- Updated Social Media Links - Only Instagram & GitHub -->
+                    <!-- Social Media Links -->
                     <div class="flex gap-4">
-                        <a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all">
+                        <a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://github.com/aikaryashala/practice" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                        <a href="https://github.com/aikaryashala/practice" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -652,8 +638,8 @@
                     <ul class="space-y-3 text-gray-400">
                         <li><a href="#tools" class="hover:text-white transition-colors">AI Tools</a></li>
                         <li><a href="#templates" class="hover:text-white transition-colors">Templates</a></li>
-                        <li><a href="https://github.com/aikaryashala/practice" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
-                        <li><a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="https://github.com/aikaryashala/practice" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Instagram</a></li>
                     </ul>
                 </div>
                 
@@ -661,10 +647,9 @@
                 <div>
                     <h4 class="font-semibold mb-4">Resources</h4>
                     <ul class="space-y-3 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Getting Started</a></li>
+                        <li><a href="#tools" class="hover:text-white transition-colors">Getting Started</a></li>
                         <li><a href="#templates" class="hover:text-white transition-colors">Prompt Guide</a></li>
-                        <li><a href="#tools" class="hover:text-white transition-colors">Tool Directory</a></li>
-                        <li><a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="https://www.instagram.com/aikaryashala?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -706,7 +691,6 @@
                         <div class="flex items-center gap-3">
                             <span id="modal-category" class="text-sm text-purple-600 dark:text-purple-400 font-semibold"></span>
                             <div class="flex items-center gap-1 text-yellow-500" id="modal-rating">
-                                <!-- Stars will be added dynamically -->
                             </div>
                         </div>
                     </div>
@@ -737,12 +721,12 @@
                 
                 <!-- Action Buttons -->
                 <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <a id="modal-website" href="" target="_blank" 
+                    <a id="modal-website" href="" target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all">
                         <i class="fas fa-external-link-alt"></i>
                         Visit Website
                     </a>
-                    <a id="modal-docs" href="" target="_blank" 
+                    <a id="modal-docs" href="" target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
                         <i class="fas fa-book"></i>
                         Documentation
@@ -755,8 +739,11 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        // Enhanced AI Tools Data
+        // ============================================
+        // AI TOOLS DATA
+        // ============================================
         const aiTools = [
             {
                 name: "ChatGPT",
@@ -877,7 +864,9 @@
             }
         ];
 
-        // Enhanced Learning Templates Data
+        // ============================================
+        // LEARNING TEMPLATES DATA
+        // ============================================
         const learningTemplates = [
             {
                 title: "Learn New Topics (Beginner Friendly)",
@@ -973,7 +962,6 @@ Keep each response under 150 words. Don't proceed until I type "continue" or ask
                 tips: "Interactive method with practice problems for better retention",
                 estimatedTime: "60-120 min"
             },
-            
             {
                 title: "Code Understanding Method",
                 icon: "fas fa-code",
@@ -1003,12 +991,16 @@ Assume I am non-technical and learning from scratch.`,
             }
         ];
 
-        // State
+        // ============================================
+        // STATE VARIABLES
+        // ============================================
         let currentCategory = 'all';
         let searchQuery = '';
         let currentTool = null;
 
-        // Initialize the page
+        // ============================================
+        // INITIALIZATION
+        // ============================================
         document.addEventListener('DOMContentLoaded', function() {
             renderTools();
             renderTemplates();
@@ -1018,7 +1010,10 @@ Assume I am non-technical and learning from scratch.`,
             checkDarkMode();
         });
 
-        // Render Category Filters
+        // ============================================
+        // RENDER FUNCTIONS
+        // ============================================
+        
         function renderCategoryFilters() {
             const categories = [...new Set(aiTools.map(tool => tool.category))];
             const container = document.getElementById('category-filters');
@@ -1037,11 +1032,9 @@ Assume I am non-technical and learning from scratch.`,
             `;
         }
 
-        // Filter by Category
         function filterByCategory(category) {
             currentCategory = category;
             
-            // Update active button
             document.querySelectorAll('.category-badge').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.textContent.trim() === category || (category === 'all' && btn.textContent.trim() === 'All Tools')) {
@@ -1052,7 +1045,6 @@ Assume I am non-technical and learning from scratch.`,
             renderTools();
         }
 
-        // Setup Search Listener
         function setupSearchListener() {
             const searchInput = document.getElementById('search-input');
             let debounceTimer;
@@ -1066,7 +1058,6 @@ Assume I am non-technical and learning from scratch.`,
             });
         }
 
-        // Setup Scroll Listener
         function setupScrollListener() {
             const backToTop = document.getElementById('back-to-top');
             
@@ -1079,24 +1070,20 @@ Assume I am non-technical and learning from scratch.`,
             });
         }
 
-        // Scroll to Top
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Render AI Tools
         function renderTools() {
             const grid = document.getElementById('tools-grid');
             const emptyState = document.getElementById('empty-state');
             
             let filteredTools = aiTools;
             
-            // Filter by category
             if (currentCategory !== 'all') {
                 filteredTools = filteredTools.filter(tool => tool.category === currentCategory);
             }
             
-            // Filter by search
             if (searchQuery) {
                 filteredTools = filteredTools.filter(tool => 
                     tool.name.toLowerCase().includes(searchQuery) ||
@@ -1118,7 +1105,6 @@ Assume I am non-technical and learning from scratch.`,
                     class="tool-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 cursor-pointer border border-gray-100 dark:border-gray-700"
                     style="animation: fadeInUp 0.5s ease-out ${index * 0.1}s both;">
                     <div class="flex flex-col">
-                        <!-- Header -->
                         <div class="flex items-start justify-between mb-4">
                             <div class="tool-icon">
                                 ${tool.logoType === 'icon' ? 
@@ -1136,12 +1122,10 @@ Assume I am non-technical and learning from scratch.`,
                             </span>
                         </div>
                         
-                        <!-- Content -->
                         <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">${tool.name}</h3>
                         <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 mb-3">${tool.category}</span>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">${tool.description.substring(0, 100)}...</p>
                         
-                        <!-- Rating -->
                         <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
                             <div class="flex items-center gap-1">
                                 ${renderStars(tool.rating)}
@@ -1156,7 +1140,6 @@ Assume I am non-technical and learning from scratch.`,
             `).join('');
         }
 
-        // Render Stars
         function renderStars(rating) {
             const fullStars = Math.floor(rating);
             const hasHalfStar = rating % 1 >= 0.5;
@@ -1175,13 +1158,11 @@ Assume I am non-technical and learning from scratch.`,
             return stars;
         }
 
-        // Render Learning Templates
         function renderTemplates() {
             const grid = document.getElementById('templates-grid');
             grid.innerHTML = learningTemplates.map((template, index) => `
                 <div class="template-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all"
                     style="animation: fadeInUp 0.5s ease-out ${index * 0.1}s both;">
-                    <!-- Header -->
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 ${template.bgColor} rounded-xl flex items-center justify-center">
@@ -1203,7 +1184,6 @@ Assume I am non-technical and learning from scratch.`,
                     
                     <p class="text-gray-600 dark:text-gray-400 mb-4">${template.description}</p>
                     
-                    <!-- Template Code Block -->
                     <div class="relative bg-gray-50 dark:bg-gray-900 rounded-xl p-4 mb-4 group">
                         <button onclick="copyTemplate(this, \`${escapeTemplate(template.template)}\`)" 
                             class="copy-btn absolute top-3 right-3 w-8 h-8 rounded-lg bg-white dark:bg-gray-800 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
@@ -1212,7 +1192,6 @@ Assume I am non-technical and learning from scratch.`,
                         <pre class="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap overflow-x-auto max-h-48">${template.template}</pre>
                     </div>
                     
-                    <!-- Footer -->
                     <div class="border-t border-gray-100 dark:border-gray-700 pt-4 space-y-2">
                         <p class="text-sm text-gray-600 dark:text-gray-400">
                             <strong class="text-gray-800 dark:text-white">Example:</strong> ${template.example}
@@ -1223,7 +1202,6 @@ Assume I am non-technical and learning from scratch.`,
                         </p>
                     </div>
                     
-                    <!-- Copy Full Template Button -->
                     <button onclick="copyTemplate(this, \`${escapeTemplate(template.template)}\`)" 
                         class="mt-4 w-full py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
                         <i class="fas fa-copy"></i>
@@ -1233,18 +1211,15 @@ Assume I am non-technical and learning from scratch.`,
             `).join('');
         }
 
-        // Escape template for HTML attribute
         function escapeTemplate(template) {
             return template.replace(/`/g, '\\`').replace(/\$/g, '\\$');
         }
 
-        // Copy Template
         function copyTemplate(button, template) {
             const cleanTemplate = template.replace(/\\`/g, '`').replace(/\\\$/g, '$');
             navigator.clipboard.writeText(cleanTemplate).then(() => {
                 showToast('Template copied to clipboard!');
                 
-                // Visual feedback
                 const icon = button.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-copy');
@@ -1260,7 +1235,6 @@ Assume I am non-technical and learning from scratch.`,
             });
         }
 
-        // Show Toast
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastMessage = document.getElementById('toast-message');
@@ -1272,28 +1246,23 @@ Assume I am non-technical and learning from scratch.`,
             }, 3000);
         }
 
-        // Switch tabs
         function switchTab(tab) {
-            // Update tab buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.getElementById(`${tab}-tab`).classList.add('active');
 
-            // Update content
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
             document.getElementById(`${tab}-content`).classList.add('active');
         }
 
-        // Show tool detail modal
         function showToolDetail(toolName) {
             const tool = aiTools.find(t => t.name === toolName);
             if (!tool) return;
             currentTool = tool;
 
-            // Handle logo
             const modalLogo = document.getElementById('modal-logo');
             const modalIconContainer = document.getElementById('modal-icon-container');
             
@@ -1311,7 +1280,6 @@ Assume I am non-technical and learning from scratch.`,
             document.getElementById('modal-category').textContent = tool.category;
             document.getElementById('modal-description').textContent = tool.description;
             
-            // Pricing badge
             const pricingBadge = document.getElementById('modal-pricing');
             pricingBadge.textContent = tool.pricing;
             pricingBadge.className = `pricing-badge px-2 py-1 rounded-full text-xs font-semibold ${
@@ -1319,11 +1287,9 @@ Assume I am non-technical and learning from scratch.`,
                 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
             }`;
             
-            // Rating
             document.getElementById('modal-rating').innerHTML = renderStars(tool.rating) + 
                 `<span class="text-sm text-gray-500 dark:text-gray-400 ml-1">${tool.rating}</span>`;
             
-            // Features
             document.getElementById('modal-features').innerHTML = tool.features.map(feature => 
                 `<div class="feature-tag flex items-center gap-2 bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-2">
                     <i class="fas fa-check-circle text-green-500 text-sm"></i>
@@ -1331,7 +1297,6 @@ Assume I am non-technical and learning from scratch.`,
                 </div>`
             ).join('');
             
-            // Use Cases
             if (tool.useCases && tool.useCases.length > 0) {
                 document.getElementById('modal-use-cases-container').style.display = 'block';
                 document.getElementById('modal-use-cases').innerHTML = tool.useCases.map(useCase => 
@@ -1348,21 +1313,18 @@ Assume I am non-technical and learning from scratch.`,
             document.body.style.overflow = 'hidden';
         }
 
-        // Handle Modal Click
         function handleModalClick(event) {
             if (event.target.id === 'tool-modal') {
                 closeModal();
             }
         }
 
-        // Close modal
         function closeModal() {
             document.getElementById('tool-modal').classList.remove('active');
             document.body.style.overflow = '';
             currentTool = null;
         }
 
-        // Share Modal
         function shareModal() {
             if (currentTool && navigator.share) {
                 navigator.share({
@@ -1376,7 +1338,6 @@ Assume I am non-technical and learning from scratch.`,
             }
         }
 
-        // Dark Mode
         function toggleDarkMode() {
             document.body.classList.toggle('dark');
             localStorage.setItem('darkMode', document.body.classList.contains('dark'));
@@ -1389,21 +1350,11 @@ Assume I am non-technical and learning from scratch.`,
             }
         }
 
-        // Handle Subscribe
-        function handleSubscribe(event) {
-            event.preventDefault();
-            showToast('Thanks for subscribing! 🎉');
-            event.target.reset();
-        }
-
-        // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
-            // ESC to close modal
             if (e.key === 'Escape' && document.getElementById('tool-modal').classList.contains('active')) {
                 closeModal();
             }
             
-            // CMD/CTRL + K for search focus
             if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
                 e.preventDefault();
                 document.getElementById('search-input').focus();
